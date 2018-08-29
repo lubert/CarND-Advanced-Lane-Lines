@@ -92,3 +92,5 @@ Here's a [link to my video result](./output.mp4)
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+
+I had some problems with the tree shadow that appears about 41 seconds into the output. The S channel filter does not do a good job filtering out the shadow, which wildly threw off the lane detection. To fix this, I added a window search to use previously detected lane lines, and I also added line "smoothing", the lines are a running average of the past 15 frames. With these changes, it helped improve lane detection in the shadow region, but if I had more time, I would probably try to further tweak the filters to filter out shadows, or maybe try a different combination of filters altogether.
